@@ -1,4 +1,4 @@
-package com.gxa.model;
+package com.gxa.domain;
 
 import java.util.Date;
 
