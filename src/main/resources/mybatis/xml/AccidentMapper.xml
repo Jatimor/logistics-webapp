@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.AccidentMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Accident">
+    <id column="no" jdbcType="VARCHAR" property="no" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="luxian" jdbcType="VARCHAR" property="luxian" />
+    <result column="accidentReason" jdbcType="VARCHAR" property="accidentreason" />
+    <result column="dealReason" jdbcType="VARCHAR" property="dealreason" />
+    <result column="f_name" jdbcType="VARCHAR" property="fName" />
+    <result column="f_phone" jdbcType="VARCHAR" property="fPhone" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_phone" jdbcType="VARCHAR" property="sPhone" />
+    <result column="dealResult" jdbcType="VARCHAR" property="dealresult" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+    <result column="dealTime" jdbcType="TIMESTAMP" property="dealtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    no, reason, time, luxian, accidentReason, dealReason, f_name, f_phone, s_name, s_phone, 
+    dealResult, beizhu, dealTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accident
+    where no = #{no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from accident
+    where no = #{no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Accident">
+    insert into accident (no, reason, time, 
+      luxian, accidentReason, dealReason, 
+      f_name, f_phone, s_name, 
+      s_phone, dealResult, beizhu, 
+      dealTime)
+    values (#{no,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{luxian,jdbcType=VARCHAR}, #{accidentreason,jdbcType=VARCHAR}, #{dealreason,jdbcType=VARCHAR}, 
+      #{fName,jdbcType=VARCHAR}, #{fPhone,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, 
+      #{sPhone,jdbcType=VARCHAR}, #{dealresult,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}, 
+      #{dealtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Accident">
+    insert into accident
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="no != null">
+        no,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="luxian != null">
+        luxian,
+      </if>
+      <if test="accidentreason != null">
+        accidentReason,
+      </if>
+      <if test="dealreason != null">
+        dealReason,
+      </if>
+      <if test="fName != null">
+        f_name,
+      </if>
+      <if test="fPhone != null">
+        f_phone,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sPhone != null">
+        s_phone,
+      </if>
+      <if test="dealresult != null">
+        dealResult,
+      </if>
+      <if test="beizhu != null">
+        beizhu,
+      </if>
+      <if test="dealtime != null">
+        dealTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="luxian != null">
+        #{luxian,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentreason != null">
+        #{accidentreason,jdbcType=VARCHAR},
+      </if>
+      <if test="dealreason != null">
+        #{dealreason,jdbcType=VARCHAR},
+      </if>
+      <if test="fName != null">
+        #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null">
+        #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealresult != null">
+        #{dealresult,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="dealtime != null">
+        #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Accident">
+    update accident
+    <set>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="luxian != null">
+        luxian = #{luxian,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentreason != null">
+        accidentReason = #{accidentreason,jdbcType=VARCHAR},
+      </if>
+      <if test="dealreason != null">
+        dealReason = #{dealreason,jdbcType=VARCHAR},
+      </if>
+      <if test="fName != null">
+        f_name = #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        f_phone = #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null">
+        s_phone = #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealresult != null">
+        dealResult = #{dealresult,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="dealtime != null">
+        dealTime = #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Accident">
+    update accident
+    set reason = #{reason,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      luxian = #{luxian,jdbcType=VARCHAR},
+      accidentReason = #{accidentreason,jdbcType=VARCHAR},
+      dealReason = #{dealreason,jdbcType=VARCHAR},
+      f_name = #{fName,jdbcType=VARCHAR},
+      f_phone = #{fPhone,jdbcType=VARCHAR},
+      s_name = #{sName,jdbcType=VARCHAR},
+      s_phone = #{sPhone,jdbcType=VARCHAR},
+      dealResult = #{dealresult,jdbcType=VARCHAR},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      dealTime = #{dealtime,jdbcType=TIMESTAMP}
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.TuoyundanMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Tuoyundan">
+    <id column="no" jdbcType="VARCHAR" property="no" />
+    <result column="f_name" jdbcType="VARCHAR" property="fName" />
+    <result column="f_phone" jdbcType="VARCHAR" property="fPhone" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_phone" jdbcType="VARCHAR" property="sPhone" />
+    <result column="goods" jdbcType="VARCHAR" property="goods" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="startAddress" jdbcType="VARCHAR" property="startaddress" />
+    <result column="endAddress" jdbcType="VARCHAR" property="endaddress" />
+    <result column="acceptAddress" jdbcType="VARCHAR" property="acceptaddress" />
+    <result column="Car_ID" jdbcType="VARCHAR" property="carId" />
+    <result column="protectPrice" jdbcType="REAL" property="protectprice" />
+    <result column="goodsPrice" jdbcType="REAL" property="goodsprice" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="proportion" jdbcType="REAL" property="proportion" />
+    <result column="transshipmentprice" jdbcType="REAL" property="transshipmentprice" />
+    <result column="distributionPrice" jdbcType="REAL" property="distributionprice" />
+    <result column="otherPrice" jdbcType="REAL" property="otherprice" />
+    <result column="sumPrice" jdbcType="REAL" property="sumprice" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="acceptSign" jdbcType="VARCHAR" property="acceptsign" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="businessStatus" jdbcType="VARCHAR" property="businessstatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    no, f_name, f_phone, s_name, s_phone, goods, number, sign, startAddress, endAddress, 
+    acceptAddress, Car_ID, protectPrice, goodsPrice, price, proportion, transshipmentprice, 
+    distributionPrice, otherPrice, sumPrice, time, acceptSign, method, status, businessStatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tuoyundan
+    where no = #{no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tuoyundan
+    where no = #{no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Tuoyundan">
+    insert into tuoyundan (no, f_name, f_phone, 
+      s_name, s_phone, goods, 
+      number, sign, startAddress, 
+      endAddress, acceptAddress, Car_ID, 
+      protectPrice, goodsPrice, price, 
+      proportion, transshipmentprice, distributionPrice, 
+      otherPrice, sumPrice, time, 
+      acceptSign, method, status, 
+      businessStatus)
+    values (#{no,jdbcType=VARCHAR}, #{fName,jdbcType=VARCHAR}, #{fPhone,jdbcType=VARCHAR}, 
+      #{sName,jdbcType=VARCHAR}, #{sPhone,jdbcType=VARCHAR}, #{goods,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{sign,jdbcType=VARCHAR}, #{startaddress,jdbcType=VARCHAR}, 
+      #{endaddress,jdbcType=VARCHAR}, #{acceptaddress,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, 
+      #{protectprice,jdbcType=REAL}, #{goodsprice,jdbcType=REAL}, #{price,jdbcType=REAL}, 
+      #{proportion,jdbcType=REAL}, #{transshipmentprice,jdbcType=REAL}, #{distributionprice,jdbcType=REAL}, 
+      #{otherprice,jdbcType=REAL}, #{sumprice,jdbcType=REAL}, #{time,jdbcType=TIMESTAMP}, 
+      #{acceptsign,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{businessstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Tuoyundan">
+    insert into tuoyundan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="no != null">
+        no,
+      </if>
+      <if test="fName != null">
+        f_name,
+      </if>
+      <if test="fPhone != null">
+        f_phone,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sPhone != null">
+        s_phone,
+      </if>
+      <if test="goods != null">
+        goods,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="startaddress != null">
+        startAddress,
+      </if>
+      <if test="endaddress != null">
+        endAddress,
+      </if>
+      <if test="acceptaddress != null">
+        acceptAddress,
+      </if>
+      <if test="carId != null">
+        Car_ID,
+      </if>
+      <if test="protectprice != null">
+        protectPrice,
+      </if>
+      <if test="goodsprice != null">
+        goodsPrice,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="proportion != null">
+        proportion,
+      </if>
+      <if test="transshipmentprice != null">
+        transshipmentprice,
+      </if>
+      <if test="distributionprice != null">
+        distributionPrice,
+      </if>
+      <if test="otherprice != null">
+        otherPrice,
+      </if>
+      <if test="sumprice != null">
+        sumPrice,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="acceptsign != null">
+        acceptSign,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="businessstatus != null">
+        businessStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="fName != null">
+        #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null">
+        #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="goods != null">
+        #{goods,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="startaddress != null">
+        #{startaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endaddress != null">
+        #{endaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptaddress != null">
+        #{acceptaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="protectprice != null">
+        #{protectprice,jdbcType=REAL},
+      </if>
+      <if test="goodsprice != null">
+        #{goodsprice,jdbcType=REAL},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="proportion != null">
+        #{proportion,jdbcType=REAL},
+      </if>
+      <if test="transshipmentprice != null">
+        #{transshipmentprice,jdbcType=REAL},
+      </if>
+      <if test="distributionprice != null">
+        #{distributionprice,jdbcType=REAL},
+      </if>
+      <if test="otherprice != null">
+        #{otherprice,jdbcType=REAL},
+      </if>
+      <if test="sumprice != null">
+        #{sumprice,jdbcType=REAL},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acceptsign != null">
+        #{acceptsign,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="businessstatus != null">
+        #{businessstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Tuoyundan">
+    update tuoyundan
+    <set>
+      <if test="fName != null">
+        f_name = #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        f_phone = #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null">
+        s_phone = #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="goods != null">
+        goods = #{goods,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="startaddress != null">
+        startAddress = #{startaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endaddress != null">
+        endAddress = #{endaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptaddress != null">
+        acceptAddress = #{acceptaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        Car_ID = #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="protectprice != null">
+        protectPrice = #{protectprice,jdbcType=REAL},
+      </if>
+      <if test="goodsprice != null">
+        goodsPrice = #{goodsprice,jdbcType=REAL},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="proportion != null">
+        proportion = #{proportion,jdbcType=REAL},
+      </if>
+      <if test="transshipmentprice != null">
+        transshipmentprice = #{transshipmentprice,jdbcType=REAL},
+      </if>
+      <if test="distributionprice != null">
+        distributionPrice = #{distributionprice,jdbcType=REAL},
+      </if>
+      <if test="otherprice != null">
+        otherPrice = #{otherprice,jdbcType=REAL},
+      </if>
+      <if test="sumprice != null">
+        sumPrice = #{sumprice,jdbcType=REAL},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acceptsign != null">
+        acceptSign = #{acceptsign,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="businessstatus != null">
+        businessStatus = #{businessstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Tuoyundan">
+    update tuoyundan
+    set f_name = #{fName,jdbcType=VARCHAR},
+      f_phone = #{fPhone,jdbcType=VARCHAR},
+      s_name = #{sName,jdbcType=VARCHAR},
+      s_phone = #{sPhone,jdbcType=VARCHAR},
+      goods = #{goods,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      startAddress = #{startaddress,jdbcType=VARCHAR},
+      endAddress = #{endaddress,jdbcType=VARCHAR},
+      acceptAddress = #{acceptaddress,jdbcType=VARCHAR},
+      Car_ID = #{carId,jdbcType=VARCHAR},
+      protectPrice = #{protectprice,jdbcType=REAL},
+      goodsPrice = #{goodsprice,jdbcType=REAL},
+      price = #{price,jdbcType=REAL},
+      proportion = #{proportion,jdbcType=REAL},
+      transshipmentprice = #{transshipmentprice,jdbcType=REAL},
+      distributionPrice = #{distributionprice,jdbcType=REAL},
+      otherPrice = #{otherprice,jdbcType=REAL},
+      sumPrice = #{sumprice,jdbcType=REAL},
+      time = #{time,jdbcType=TIMESTAMP},
+      acceptSign = #{acceptsign,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      businessStatus = #{businessstatus,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+</mapper>

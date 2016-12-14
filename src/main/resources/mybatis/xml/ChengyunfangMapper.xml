@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.ChengyunfangMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Chengyunfang">
+    <id column="name" jdbcType="VARCHAR" property="name" />
+    <result column="people" jdbcType="VARCHAR" property="people" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="contactPeople" jdbcType="VARCHAR" property="contactpeople" />
+    <result column="contactPhone" jdbcType="VARCHAR" property="contactphone" />
+    <result column="bumen" jdbcType="VARCHAR" property="bumen" />
+    <result column="zhiwei" jdbcType="VARCHAR" property="zhiwei" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    name, people, address, code, status, phone, contactPeople, contactPhone, bumen, zhiwei, 
+    fax, e_mail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chengyunfang
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from chengyunfang
+    where name = #{name,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Chengyunfang">
+    insert into chengyunfang (name, people, address, 
+      code, status, phone, 
+      contactPeople, contactPhone, bumen, 
+      zhiwei, fax, e_mail)
+    values (#{name,jdbcType=VARCHAR}, #{people,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{contactpeople,jdbcType=VARCHAR}, #{contactphone,jdbcType=VARCHAR}, #{bumen,jdbcType=VARCHAR}, 
+      #{zhiwei,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Chengyunfang">
+    insert into chengyunfang
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="people != null">
+        people,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="contactpeople != null">
+        contactPeople,
+      </if>
+      <if test="contactphone != null">
+        contactPhone,
+      </if>
+      <if test="bumen != null">
+        bumen,
+      </if>
+      <if test="zhiwei != null">
+        zhiwei,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="people != null">
+        #{people,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null">
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bumen != null">
+        #{bumen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwei != null">
+        #{zhiwei,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Chengyunfang">
+    update chengyunfang
+    <set>
+      <if test="people != null">
+        people = #{people,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null">
+        contactPhone = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bumen != null">
+        bumen = #{bumen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwei != null">
+        zhiwei = #{zhiwei,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Chengyunfang">
+    update chengyunfang
+    set people = #{people,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      contactPhone = #{contactphone,jdbcType=VARCHAR},
+      bumen = #{bumen,jdbcType=VARCHAR},
+      zhiwei = #{zhiwei,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>

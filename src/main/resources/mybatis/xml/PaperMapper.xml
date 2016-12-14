@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.PaperMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Paper">
+    <id column="tuo_no" jdbcType="VARCHAR" property="tuoNo" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+    <result column="jiaopiao" jdbcType="VARCHAR" property="jiaopiao" />
+    <result column="shoupiao" jdbcType="VARCHAR" property="shoupiao" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tuo_no, status, realname, time, beizhu, jiaopiao, shoupiao
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from paper
+    where tuo_no = #{tuoNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from paper
+    where tuo_no = #{tuoNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Paper">
+    insert into paper (tuo_no, status, realname, 
+      time, beizhu, jiaopiao, 
+      shoupiao)
+    values (#{tuoNo,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{beizhu,jdbcType=VARCHAR}, #{jiaopiao,jdbcType=VARCHAR}, 
+      #{shoupiao,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Paper">
+    insert into paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tuoNo != null">
+        tuo_no,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="beizhu != null">
+        beizhu,
+      </if>
+      <if test="jiaopiao != null">
+        jiaopiao,
+      </if>
+      <if test="shoupiao != null">
+        shoupiao,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tuoNo != null">
+        #{tuoNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="jiaopiao != null">
+        #{jiaopiao,jdbcType=VARCHAR},
+      </if>
+      <if test="shoupiao != null">
+        #{shoupiao,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Paper">
+    update paper
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="jiaopiao != null">
+        jiaopiao = #{jiaopiao,jdbcType=VARCHAR},
+      </if>
+      <if test="shoupiao != null">
+        shoupiao = #{shoupiao,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tuo_no = #{tuoNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Paper">
+    update paper
+    set status = #{status,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      jiaopiao = #{jiaopiao,jdbcType=VARCHAR},
+      shoupiao = #{shoupiao,jdbcType=VARCHAR}
+    where tuo_no = #{tuoNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

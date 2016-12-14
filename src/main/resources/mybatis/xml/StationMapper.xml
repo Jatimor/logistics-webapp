@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.StationMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Station">
+    <id column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_no" jdbcType="VARCHAR" property="sNo" />
+    <result column="legalPeople" jdbcType="VARCHAR" property="legalpeople" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="contactPeople" jdbcType="VARCHAR" property="contactpeople" />
+    <result column="contactPhone" jdbcType="VARCHAR" property="contactphone" />
+    <result column="bumen" jdbcType="VARCHAR" property="bumen" />
+    <result column="zhiwei" jdbcType="VARCHAR" property="zhiwei" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    s_name, s_no, legalPeople, address, code, status, des, phone, contactPeople, contactPhone, 
+    bumen, zhiwei, fax, e_mail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from station
+    where s_name = #{sName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from station
+    where s_name = #{sName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Station">
+    insert into station (s_name, s_no, legalPeople, 
+      address, code, status, 
+      des, phone, contactPeople, 
+      contactPhone, bumen, zhiwei, 
+      fax, e_mail)
+    values (#{sName,jdbcType=VARCHAR}, #{sNo,jdbcType=VARCHAR}, #{legalpeople,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{des,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{contactpeople,jdbcType=VARCHAR}, 
+      #{contactphone,jdbcType=VARCHAR}, #{bumen,jdbcType=VARCHAR}, #{zhiwei,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Station">
+    insert into station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sNo != null">
+        s_no,
+      </if>
+      <if test="legalpeople != null">
+        legalPeople,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="contactpeople != null">
+        contactPeople,
+      </if>
+      <if test="contactphone != null">
+        contactPhone,
+      </if>
+      <if test="bumen != null">
+        bumen,
+      </if>
+      <if test="zhiwei != null">
+        zhiwei,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalpeople != null">
+        #{legalpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null">
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bumen != null">
+        #{bumen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwei != null">
+        #{zhiwei,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Station">
+    update station
+    <set>
+      <if test="sNo != null">
+        s_no = #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalpeople != null">
+        legalPeople = #{legalpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null">
+        contactPhone = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bumen != null">
+        bumen = #{bumen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwei != null">
+        zhiwei = #{zhiwei,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_name = #{sName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Station">
+    update station
+    set s_no = #{sNo,jdbcType=VARCHAR},
+      legalPeople = #{legalpeople,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      des = #{des,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      contactPhone = #{contactphone,jdbcType=VARCHAR},
+      bumen = #{bumen,jdbcType=VARCHAR},
+      zhiwei = #{zhiwei,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
+    where s_name = #{sName,jdbcType=VARCHAR}
+  </update>
+</mapper>

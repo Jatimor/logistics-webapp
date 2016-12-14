@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.JiehuoMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Jiehuo">
+    <id column="w_id" jdbcType="INTEGER" property="wId" />
+    <result column="time" jdbcType="CHAR" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    w_id, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jiehuo
+    where w_id = #{wId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jiehuo
+    where w_id = #{wId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Jiehuo">
+    insert into jiehuo (w_id, time)
+    values (#{wId,jdbcType=INTEGER}, #{time,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Jiehuo">
+    insert into jiehuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wId != null">
+        w_id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wId != null">
+        #{wId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Jiehuo">
+    update jiehuo
+    <set>
+      <if test="time != null">
+        time = #{time,jdbcType=CHAR},
+      </if>
+    </set>
+    where w_id = #{wId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Jiehuo">
+    update jiehuo
+    set time = #{time,jdbcType=CHAR}
+    where w_id = #{wId,jdbcType=INTEGER}
+  </update>
+</mapper>

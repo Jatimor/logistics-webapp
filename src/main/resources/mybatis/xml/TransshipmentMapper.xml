@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.TransshipmentMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Transshipment">
+    <id column="company" jdbcType="VARCHAR" property="company" />
+    <result column="lawPeople" jdbcType="VARCHAR" property="lawpeople" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="f_phone" jdbcType="VARCHAR" property="fPhone" />
+    <result column="contactPeople" jdbcType="VARCHAR" property="contactpeople" />
+    <result column="l_phone" jdbcType="VARCHAR" property="lPhone" />
+    <result column="部门" jdbcType="VARCHAR" property="部门" />
+    <result column="zhiwu" jdbcType="VARCHAR" property="zhiwu" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company, lawPeople, address, code, status, f_phone, contactPeople, l_phone, 部门, zhiwu, 
+    fax, e_mail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from transshipment
+    where company = #{company,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from transshipment
+    where company = #{company,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Transshipment">
+    insert into transshipment (company, lawPeople, address, 
+      code, status, f_phone, 
+      contactPeople, l_phone, 部门, 
+      zhiwu, fax, e_mail)
+    values (#{company,jdbcType=VARCHAR}, #{lawpeople,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{fPhone,jdbcType=VARCHAR}, 
+      #{contactpeople,jdbcType=VARCHAR}, #{lPhone,jdbcType=VARCHAR}, #{部门,jdbcType=VARCHAR}, 
+      #{zhiwu,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Transshipment">
+    insert into transshipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="company != null">
+        company,
+      </if>
+      <if test="lawpeople != null">
+        lawPeople,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="fPhone != null">
+        f_phone,
+      </if>
+      <if test="contactpeople != null">
+        contactPeople,
+      </if>
+      <if test="lPhone != null">
+        l_phone,
+      </if>
+      <if test="部门 != null">
+        部门,
+      </if>
+      <if test="zhiwu != null">
+        zhiwu,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="lawpeople != null">
+        #{lawpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhone != null">
+        #{lPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="部门 != null">
+        #{部门,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwu != null">
+        #{zhiwu,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Transshipment">
+    update transshipment
+    <set>
+      <if test="lawpeople != null">
+        lawPeople = #{lawpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="fPhone != null">
+        f_phone = #{fPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpeople != null">
+        contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhone != null">
+        l_phone = #{lPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="部门 != null">
+        部门 = #{部门,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwu != null">
+        zhiwu = #{zhiwu,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company = #{company,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Transshipment">
+    update transshipment
+    set lawPeople = #{lawpeople,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      f_phone = #{fPhone,jdbcType=VARCHAR},
+      contactPeople = #{contactpeople,jdbcType=VARCHAR},
+      l_phone = #{lPhone,jdbcType=VARCHAR},
+      部门 = #{部门,jdbcType=VARCHAR},
+      zhiwu = #{zhiwu,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
+    where company = #{company,jdbcType=VARCHAR}
+  </update>
+</mapper>

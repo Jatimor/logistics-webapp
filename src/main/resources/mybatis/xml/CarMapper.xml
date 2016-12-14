@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.dao.CarMapper">
+  <resultMap id="BaseResultMap" type="com.gxa.domain.Car">
+    <id column="car_ID" jdbcType="VARCHAR" property="carId" />
+    <result column="models" jdbcType="VARCHAR" property="models" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+    <result column="xianlu" jdbcType="INTEGER" property="xianlu" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_ID, models, company, status, beizhu, xianlu
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where car_ID = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car
+    where car_ID = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gxa.domain.Car">
+    insert into car (car_ID, models, company, 
+      status, beizhu, xianlu
+      )
+    values (#{carId,jdbcType=VARCHAR}, #{models,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}, #{xianlu,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gxa.domain.Car">
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_ID,
+      </if>
+      <if test="models != null">
+        models,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="beizhu != null">
+        beizhu,
+      </if>
+      <if test="xianlu != null">
+        xianlu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="models != null">
+        #{models,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="xianlu != null">
+        #{xianlu,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gxa.domain.Car">
+    update car
+    <set>
+      <if test="models != null">
+        models = #{models,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="xianlu != null">
+        xianlu = #{xianlu,jdbcType=INTEGER},
+      </if>
+    </set>
+    where car_ID = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gxa.domain.Car">
+    update car
+    set models = #{models,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      xianlu = #{xianlu,jdbcType=INTEGER}
+    where car_ID = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>
