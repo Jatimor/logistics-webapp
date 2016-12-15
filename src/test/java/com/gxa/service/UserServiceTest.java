@@ -21,7 +21,7 @@ public class UserServiceTest {
 
     @Test
     public void findAll() throws Exception {
-        Assert.assertEquals(1,userService.findAll().size());
+        Assert.assertEquals(2,userService.findAll().size());
     }
 
 }
